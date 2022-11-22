@@ -1,11 +1,21 @@
-import React from 'react'
-import {ReturnComponentType} from '../../types'
+import React, {ChangeEvent, FC} from 'react'
 import './search.css'
 
-export const Search = (): ReturnComponentType => {
+type PropsType = {
+  onSearchChange: (title: string) => void
+}
+
+export const Search: FC<PropsType> = ({onSearchChange}) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    onSearchChange(e.currentTarget.value)
+  }
+
   return (
-    <div>
-      <input className="search" type="text" placeholder="type to search..." />
-    </div>
+    <input
+      placeholder="Type to search..."
+      className="search"
+      type="search"
+      onChange={handleChange}
+    />
   )
 }

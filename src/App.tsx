@@ -1,23 +1,14 @@
-import React, {useState} from 'react'
+import React, {FC, useState} from 'react'
 import './App.css'
-import {ReturnComponentType} from './types'
 import {NotesList} from './components/notelist/NotesList'
 import {Header} from './components/header/Header'
 import {Search} from './components/search/Search'
+import {Value} from './enum/value'
+import {data, NoteType} from './dataBase'
 
-const dataNotes: NotesType = [
-  {id: '1', title: 'first'},
-  {id: '2', title: 'second'},
-  {id: '3', title: 'third'},
-  {id: '4', title: 'fourth'},
-]
-
-export type NoteType = {id: string; title: string}
-
-export type NotesType = NoteType[]
-
-export const App = (): ReturnComponentType => {
-  const [notes, setNotes] = useState<NotesType>(dataNotes)
+export const App: FC = () => {
+  const [notes, setNotes] = useState(data.notes)
+  const [search, setSearch] = useState<string>(Value.EmptyString)
 
   const handleRemoveNoteClick = (id: string): void => {
     setNotes(notes.filter(note => id !== note.id))
@@ -25,16 +16,19 @@ export const App = (): ReturnComponentType => {
   const handleUpdateNoteTitleChange = (id: string, title: string): void => {
     setNotes(notes.map(note => (id === note.id ? {...note, title} : note)))
   }
-  const handleCreateNoteClick = (title: string): void => {
-    setNotes([...notes, {id: new Date().getTime().toLocaleString(), title}])
+  const handleCreateNoteClick = (note: NoteType): void => {
+    setNotes([...notes, note])
   }
+  const filteredNotes = notes.filter(
+    note => note.tags.filter(tag => tag.toLowerCase().includes(search))[0],
+  )
 
   return (
     <div className="container">
       <Header />
-      <Search />
+      <Search onSearchChange={setSearch} />
       <NotesList
-        notes={notes}
+        data={filteredNotes}
         onRemoveNoteClick={handleRemoveNoteClick}
         onUpdateNoteTitleChange={handleUpdateNoteTitleChange}
         onCreateNoteClick={handleCreateNoteClick}

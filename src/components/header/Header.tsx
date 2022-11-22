@@ -1,8 +1,7 @@
-import React from 'react'
-import {ReturnComponentType} from '../../types'
+import React, {FC} from 'react'
 import './header.css'
 
-export const Header = (): ReturnComponentType => {
+export const Header: FC = () => {
   return (
     <div>
       <h1 className="header">Notes</h1>

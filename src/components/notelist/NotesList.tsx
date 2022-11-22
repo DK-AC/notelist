@@ -1,27 +1,29 @@
+/* eslint-disable */
+
 import React, {FC} from 'react'
 import {Note} from '../note/Note'
 import './notelist.css'
-import {NotesType} from '../../App'
 import {CreateNote} from '../createNote/CreateNote'
+import {NoteType} from '../../dataBase'
 
 type PropsType = {
-  notes: NotesType
+  data: NoteType[]
   onRemoveNoteClick: (id: string) => void
   onUpdateNoteTitleChange: (id: string, title: string) => void
-  onCreateNoteClick: (title: string) => void
+  onCreateNoteClick: (note: NoteType) => void
 }
 
 export const NotesList: FC<PropsType> = ({
-  notes,
+  data,
   onRemoveNoteClick,
   onUpdateNoteTitleChange,
   onCreateNoteClick,
 }) => {
-  const mapNotes = notes.map(notes => {
+  const mapNotes = data.map((note: NoteType) => {
     return (
       <Note
-        key={notes.id}
-        {...notes}
+        key={note.id}
+        {...note}
         onRemoveNoteClick={onRemoveNoteClick}
         onUpdateNoteTitleChange={onUpdateNoteTitleChange}
       />

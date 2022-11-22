@@ -2,9 +2,11 @@ import React, {ChangeEvent, FC, useState} from 'react'
 import './createNote.css'
 import {CustomButton} from '../customButton/CustomButton'
 import {Value} from '../../enum/value'
+import {NoteType} from '../../dataBase'
+import {v1} from 'uuid'
 
 type PropsType = {
-  onCreateNoteClick: (title: string) => void
+  onCreateNoteClick: (note: NoteType) => void
 }
 
 export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
@@ -13,9 +15,19 @@ export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
   const handleUpdateTitleChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     setTitle(e.currentTarget.value)
   }
+
   const handleCreateNodeClick = (): void => {
     if (title.trim() !== Value.EmptyString) {
-      onCreateNoteClick(title)
+      onCreateNoteClick({
+        id: v1(),
+        title,
+        tags: [
+          title
+            .split(' ')
+            .filter(str => str.includes('#'))
+            .join(' '),
+        ],
+      })
       setTitle(Value.EmptyString)
     }
   }
