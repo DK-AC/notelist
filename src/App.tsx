@@ -26,7 +26,7 @@ export const App = (): ReturnComponentType => {
     setNotes(notes.map(note => (id === note.id ? {...note, title} : note)))
   }
   const handleCreateNoteClick = (title: string): void => {
-    setNotes([...notes, {id: new Date().getDate().toLocaleString(), title}])
+    setNotes([...notes, {id: new Date().getTime().toLocaleString(), title}])
   }
 
   return (

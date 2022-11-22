@@ -27,8 +27,8 @@ export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
         onChange={handleUpdateTitleChange}
         cols={10}
         rows={6}
-        placeholder="Type...."
-        maxLength={200}
+        placeholder="Type to add a note..."
+        maxLength={150}
       />
       <div className="create-note-footer">
         <CustomButton title="save" callback={handleCreateNodeClick} />

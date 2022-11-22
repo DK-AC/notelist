@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, KeyboardEvent, useState} from 'react'
+import React, {ChangeEvent, FC, useState} from 'react'
 import './editableSpan.css'
 import {Value} from '../../enum/value'
 
@@ -20,11 +20,6 @@ export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) =>
       onUpdateNoteTitleChange(value)
     }
   }
-  const handleSetIsEditModeKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>): void => {
-    if (e.key === 'Enter') {
-      setIsActiveEditMode()
-    }
-  }
 
   return (
     <div className="test">
@@ -34,10 +29,9 @@ export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) =>
           value={value}
           onChange={handleUpdateTitleChange}
           onBlur={setIsActiveEditMode}
-          onKeyDown={handleSetIsEditModeKeyDown}
           cols={10}
           rows={6}
-          maxLength={200}
+          maxLength={150}
         />
       ) : (
         <span onDoubleClick={setIsActiveEditMode}>{title}</span>
