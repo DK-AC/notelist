@@ -25,6 +25,9 @@ export const App = (): ReturnComponentType => {
   const handleUpdateNoteTitleChange = (id: string, title: string): void => {
     setNotes(notes.map(note => (id === note.id ? {...note, title} : note)))
   }
+  const handleCreateNoteClick = (title: string): void => {
+    setNotes([...notes, {id: new Date().getDate().toLocaleString(), title}])
+  }
 
   return (
     <div className="container">
@@ -34,6 +37,7 @@ export const App = (): ReturnComponentType => {
         notes={notes}
         onRemoveNoteClick={handleRemoveNoteClick}
         onUpdateNoteTitleChange={handleUpdateNoteTitleChange}
+        onCreateNoteClick={handleCreateNoteClick}
       />
     </div>
   )

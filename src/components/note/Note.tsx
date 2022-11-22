@@ -1,6 +1,7 @@
 import React, {FC} from 'react'
 import './note.css'
 import {EditableSpan} from '../editableSpan/EditableSpan'
+import {CustomButton} from '../customButton/CustomButton'
 
 type PropsType = {
   id: string
@@ -15,6 +16,9 @@ export const Note: FC<PropsType> = ({
   onRemoveNoteClick,
   onUpdateNoteTitleChange,
 }) => {
+  const handleRemoveNoteClick = (): void => {
+    onRemoveNoteClick(id)
+  }
   const handleUpdateNoteTitleChange = (title: string): void => {
     onUpdateNoteTitleChange(id, title)
   }
@@ -26,9 +30,7 @@ export const Note: FC<PropsType> = ({
         <span className="note-footer-item">
           <b>#hash</b>
         </span>
-        <button type="button" onClick={() => onRemoveNoteClick(id)}>
-          delete
-        </button>
+        <CustomButton title="delete" callback={handleRemoveNoteClick} />
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ textarea {
     border: none;
     resize: none;
     background-color: #d8dddf;
+    border-radius: 10px;
 }
 
 textarea:focus {

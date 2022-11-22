@@ -8,12 +8,14 @@ type PropsType = {
   notes: NotesType
   onRemoveNoteClick: (id: string) => void
   onUpdateNoteTitleChange: (id: string, title: string) => void
+  onCreateNoteClick: (title: string) => void
 }
 
 export const NotesList: FC<PropsType> = ({
   notes,
   onRemoveNoteClick,
   onUpdateNoteTitleChange,
+  onCreateNoteClick,
 }) => {
   const mapNotes = notes.map(notes => {
     return (
@@ -29,7 +31,7 @@ export const NotesList: FC<PropsType> = ({
   return (
     <div className="notes-list">
       {mapNotes}
-      <CreateNote />
+      <CreateNote onCreateNoteClick={onCreateNoteClick} />
     </div>
   )
 }
