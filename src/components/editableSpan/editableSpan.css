@@ -7,3 +7,9 @@ textarea {
 textarea:focus {
     outline: none;
 }
+
+.test {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}

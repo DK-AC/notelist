@@ -24,7 +24,7 @@ export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) =>
   }
 
   return (
-    <div>
+    <div className="test">
       {isEditMode ? (
         <textarea
           className="textarea"
@@ -32,6 +32,8 @@ export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) =>
           onChange={handleUpdateTitleChange}
           onBlur={setIsActiveEditMode}
           onKeyDown={handleSetIsEditModeKeyDown}
+          cols={10}
+          rows={6}
         />
       ) : (
         <span onDoubleClick={setIsActiveEditMode}>{title}</span>

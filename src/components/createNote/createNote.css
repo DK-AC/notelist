@@ -1,0 +1,35 @@
+.create-note {
+    background-color: #bbdcff;
+    border-radius: 10px;
+    border: 2px solid #808080;
+    color: #fff;
+    padding: 15px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.create-note-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.create-note-save {
+    background: transparent;
+    transition: 0.1s ease-in-out;
+    border: 2px solid #808080;
+    border-radius: 10px;
+    color: #808080;
+    padding: 4px 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.create-note-save:hover {
+    background: #808080;
+    border: 2px solid #fff;
+    color: #fff;
+}

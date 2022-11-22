@@ -2,6 +2,7 @@ import React, {FC} from 'react'
 import {Note} from '../note/Note'
 import './notelist.css'
 import {NotesType} from '../../App'
+import {CreateNote} from '../createNote/CreateNote'
 
 type PropsType = {
   notes: NotesType
@@ -25,5 +26,10 @@ export const NotesList: FC<PropsType> = ({
     )
   })
 
-  return <div className="notes-list">{mapNotes}</div>
+  return (
+    <div className="notes-list">
+      {mapNotes}
+      <CreateNote />
+    </div>
+  )
 }
