@@ -3,7 +3,6 @@ import './note.css'
 import {EditableSpan} from '../editableSpan/EditableSpan'
 import {CustomButton} from '../customButton/CustomButton'
 import {TagsType} from '../../dataBase'
-import {v1} from 'uuid'
 
 type PropsType = {
   id: string
@@ -11,6 +10,7 @@ type PropsType = {
   tags: TagsType
   onRemoveNoteClick: (id: string) => void
   onUpdateNoteTitleChange: (id: string, title: string) => void
+  onRemoveTagClick: (obj: TagsType, itemId: string) => void
 }
 
 export const Note: FC<PropsType> = ({
@@ -19,16 +19,29 @@ export const Note: FC<PropsType> = ({
   tags,
   onRemoveNoteClick,
   onUpdateNoteTitleChange,
+  onRemoveTagClick,
 }) => {
   const handleRemoveNoteClick = (): void => {
     onRemoveNoteClick(id)
   }
+
   const handleUpdateNoteTitleChange = (title: string): void => {
     onUpdateNoteTitleChange(id, title)
   }
 
   const mapTags = tags.map(tag => {
-    return <b key={v1()}>{tag} </b>
+    const handleRemoveTagClick = (): void => {
+      onRemoveTagClick(tags, tag.id)
+    }
+
+    return (
+      <b key={tag.id}>
+        {tag.title}
+        <button type="button" onClick={handleRemoveTagClick}>
+          x
+        </button>
+      </b>
+    )
   })
 
   return (

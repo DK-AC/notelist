@@ -21,13 +21,9 @@ export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
       onCreateNoteClick({
         id: v1(),
         title,
-        tags: [
-          title
-            .split(' ')
-            .filter(str => str.includes('#'))
-            .join(' '),
-        ],
+        tags: [{title: '', id: v1()}],
       })
+      // title.split(' ').filter(str => str.includes('#'))
       setTitle(Value.EmptyString)
     }
   }
