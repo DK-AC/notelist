@@ -1,0 +1,33 @@
+@import "src/sassStyles/variables";
+
+.create-note {
+    background-color: $secondary-color;
+    border-radius: 10px;
+    border: 2px solid $border-color;
+    color: $white-color;
+    padding: 15px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+
+    &__textarea {
+        border: none;
+        resize: none;
+        background-color: #bbdcff;
+        border-radius: 10px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+

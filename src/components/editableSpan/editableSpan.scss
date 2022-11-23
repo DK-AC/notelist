@@ -1,0 +1,18 @@
+@import "src/sassStyles/variables";
+
+.text-holder {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+
+    &__area {
+        border: none;
+        resize: none;
+        background-color: $secondary-color;
+        border-radius: 10px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

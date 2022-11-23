@@ -1,12 +1,12 @@
 import React, {FC} from 'react'
-import './customButton.css'
+import './reusableButton.scss'
 
 type PropsType = {
   title: string
   callback: () => void
 }
 
-export const CustomButton: FC<PropsType> = ({callback, title}) => {
+export const ReusableButton: FC<PropsType> = ({callback, title}) => {
   return (
     <button className="button" type="button" onClick={callback}>
       {title}

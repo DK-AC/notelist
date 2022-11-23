@@ -1,5 +1,5 @@
 import React, {ChangeEvent, FC} from 'react'
-import './search.css'
+import './search.scss'
 
 type PropsType = {
   onSearchChange: (title: string) => void
@@ -13,7 +13,7 @@ export const Search: FC<PropsType> = ({onSearchChange}) => {
   return (
     <input
       placeholder="Type to search..."
-      className="search"
+      className="search-tags"
       type="search"
       onChange={handleChange}
     />

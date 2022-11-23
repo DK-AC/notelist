@@ -15,7 +15,7 @@ export const data: NotesType = {
       title: 'Car',
       tags: [
         {id: v1(), title: '#cars'},
-        {id: v1(), title: '#carsofinstagram'},
+        {id: v1(), title: '#audi'},
       ],
     },
     {

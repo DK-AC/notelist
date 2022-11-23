@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
-import './note.css'
-import {EditableSpan} from '../editableSpan/EditableSpan'
-import {CustomButton} from '../customButton/CustomButton'
+import './note.scss'
+import {EditableSpan} from '../editableSpan'
+import {ReusableButton} from '../reusableButton'
 import {TagsType} from '../../dataBase'
 
 type PropsType = {
@@ -24,11 +24,9 @@ export const Note: FC<PropsType> = ({
   const handleRemoveNoteClick = (): void => {
     onRemoveNoteClick(id)
   }
-
   const handleUpdateNoteTitleChange = (title: string): void => {
     onUpdateNoteTitleChange(id, title)
   }
-
   const mapTags = tags.map(tag => {
     const handleRemoveTagClick = (): void => {
       onRemoveTagClick(tags, tag.id)
@@ -38,9 +36,7 @@ export const Note: FC<PropsType> = ({
       <b key={tag.id}>
         {tag.title}
         {tag.title.includes('#') && (
-          <button type="button" onClick={handleRemoveTagClick}>
-            x
-          </button>
+          <ReusableButton title="x" callback={handleRemoveTagClick} />
         )}
       </b>
     )
@@ -50,8 +46,8 @@ export const Note: FC<PropsType> = ({
     <div className="note">
       <EditableSpan title={title} onUpdateNoteTitleChange={handleUpdateNoteTitleChange} />
       <div className="note-footer">
-        <span className="note-footer-item">{mapTags}</span>
-        <CustomButton title="delete" callback={handleRemoveNoteClick} />
+        <span>{mapTags}</span>
+        <ReusableButton title="delete" callback={handleRemoveNoteClick} />
       </div>
     </div>
   )

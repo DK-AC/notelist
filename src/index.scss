@@ -1,3 +1,5 @@
+@import "src/sassStyles/variables";
+
 *,
 *::before,
 *::after {
@@ -6,6 +8,7 @@
 
 body {
     min-height: 100vh;
+    background-color: $background-color;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;

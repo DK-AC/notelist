@@ -1,5 +1,5 @@
 import React, {ChangeEvent, FC, useState} from 'react'
-import './editableSpan.css'
+import './editableSpan.scss'
 import {Value} from '../../enum/value'
 
 type PropsType = {
@@ -22,10 +22,10 @@ export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) =>
   }
 
   return (
-    <div className="test">
+    <div className="text-holder">
       {isEditMode ? (
         <textarea
-          className="textarea"
+          className="text-holder__area"
           value={value}
           onChange={handleUpdateTitleChange}
           onBlur={setIsActiveEditMode}

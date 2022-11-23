@@ -1,10 +1,8 @@
-/* eslint-disable */
-
 import React, {FC} from 'react'
-import {Note} from '../note/Note'
-import './notelist.css'
-import {CreateNote} from '../createNote/CreateNote'
+import {Note} from '../note'
+import './notelist.scss'
 import {NoteType, TagsType} from '../../dataBase'
+import {CreateNote} from '../createNote'
 
 type PropsType = {
   data: NoteType[]
@@ -21,7 +19,7 @@ export const NotesList: FC<PropsType> = ({
   onCreateNoteClick,
   onRemoveTagClick,
 }) => {
-  const mapNotes = data.map((note: NoteType, index) => {
+  const mapNotes = data.map((note: NoteType) => {
     return (
       <Note
         key={note.id}

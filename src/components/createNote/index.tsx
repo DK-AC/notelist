@@ -1,6 +1,6 @@
 import React, {ChangeEvent, FC, useState} from 'react'
-import './createNote.css'
-import {CustomButton} from '../customButton/CustomButton'
+import './createNote.scss'
+import {ReusableButton} from '../reusableButton'
 import {Value} from '../../enum/value'
 import {NoteType} from '../../dataBase'
 import {v1} from 'uuid'
@@ -31,6 +31,7 @@ export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
   return (
     <div className="create-note">
       <textarea
+        className="create-note__textarea"
         value={title}
         onChange={handleUpdateTitleChange}
         cols={10}
@@ -38,8 +39,8 @@ export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
         placeholder="Type to add a note..."
         maxLength={150}
       />
-      <div className="create-note-footer">
-        <CustomButton title="save" callback={handleCreateNodeClick} />
+      <div className="create-note__footer">
+        <ReusableButton title="save" callback={handleCreateNodeClick} />
       </div>
     </div>
   )

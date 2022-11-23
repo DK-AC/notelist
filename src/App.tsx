@@ -1,10 +1,10 @@
 import React, {FC, useState} from 'react'
-import './App.css'
-import {NotesList} from './components/notelist/NotesList'
-import {Header} from './components/header/Header'
-import {Search} from './components/search/Search'
+import './app.scss'
 import {Value} from './enum/value'
 import {data, NoteType, TagsType} from './dataBase'
+import {Header} from './components/header'
+import {Search} from './components/search'
+import {NotesList} from './components/notelist'
 
 export const App: FC = () => {
   const [notes, setNotes] = useState<NoteType[]>(data.notes)
@@ -19,7 +19,6 @@ export const App: FC = () => {
   const handleCreateNoteClick = (note: NoteType): void => {
     setNotes([...notes, note])
   }
-
   const handleRemoveTagClick = (tags: TagsType, tagId: string): void => {
     setNotes(
       notes.map(note => ({
@@ -35,7 +34,7 @@ export const App: FC = () => {
 
   return (
     <div className="container">
-      <Header />
+      <Header title="Notes" />
       <Search onSearchChange={setSearch} />
       <NotesList
         data={filteredNotes}

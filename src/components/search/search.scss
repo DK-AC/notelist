@@ -1,15 +1,18 @@
+@import "src/sassStyles/variables";
 
-.search {
+.search-tags {
     display: flex;
     align-items: center;
-    background-color: rgb(233, 233, 233);
+    background-color: $white-color;
     border-radius: 10px;
     padding: 8px;
     margin-bottom: 1.5em;
     width: 100%;
     border: none;
+
+    &:focus {
+        outline: none;
+    }
 }
 
-.search:focus {
-    outline: none;
-}
+

@@ -1,0 +1,19 @@
+@import "src/sassStyles/variables";
+
+.button {
+    background: transparent;
+    transition: 0.1s ease-in-out;
+    border: 2px solid $border-color;
+    border-radius: 10px;
+    color: $border-color;
+    padding: 4px 10px;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover {
+        background: $border-color;
+        border: 2px solid transparent;
+        color: $white-color;
+    }
+}
+
