@@ -37,9 +37,11 @@ export const Note: FC<PropsType> = ({
     return (
       <b key={tag.id}>
         {tag.title}
-        <button type="button" onClick={handleRemoveTagClick}>
-          x
-        </button>
+        {tag.title.includes('#') && (
+          <button type="button" onClick={handleRemoveTagClick}>
+            x
+          </button>
+        )}
       </b>
     )
   })

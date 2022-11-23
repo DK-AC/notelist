@@ -21,11 +21,7 @@ export const data: NotesType = {
     {
       id: v1(),
       title: 'soccer',
-      tags: [
-        {id: v1(), title: '#football'},
-        {id: v1(), title: '#sport'},
-        {id: v1(), title: '#soccer'},
-      ],
+      tags: [{id: v1(), title: '#sport'}],
     },
     {
       id: v1(),

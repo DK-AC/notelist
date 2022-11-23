@@ -18,12 +18,12 @@ export const CreateNote: FC<PropsType> = ({onCreateNoteClick}) => {
 
   const handleCreateNodeClick = (): void => {
     if (title.trim() !== Value.EmptyString) {
-      onCreateNoteClick({
-        id: v1(),
-        title,
-        tags: [{title: '', id: v1()}],
-      })
-      // title.split(' ').filter(str => str.includes('#'))
+      const addHashTagToNote = title
+        .split(' ')
+        .filter(str => str.includes('#'))
+        .join('')
+
+      onCreateNoteClick({id: v1(), title, tags: [{title: addHashTagToNote, id: v1()}]})
       setTitle(Value.EmptyString)
     }
   }
