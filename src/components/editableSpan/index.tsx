@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useState} from 'react'
+import React, {ChangeEvent, FC, memo, useState} from 'react'
 import './editableSpan.scss'
 import {Value} from '../../enum/value'
 
@@ -7,7 +7,7 @@ type PropsType = {
   onUpdateNoteTitleChange: (title: string) => void
 }
 
-export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) => {
+export const EditableSpan: FC<PropsType> = memo(({title, onUpdateNoteTitleChange}) => {
   const [value, setValue] = useState(title)
   const [isEditMode, setIsEditMode] = useState(false)
 
@@ -38,4 +38,4 @@ export const EditableSpan: FC<PropsType> = ({title, onUpdateNoteTitleChange}) =>
       )}
     </div>
   )
-}
+})

@@ -5,6 +5,7 @@ import {data, NoteType, TagsType} from './dataBase'
 import {Header} from './components/header'
 import {Search} from './components/search'
 import {NotesList} from './components/notelist'
+import {v1} from 'uuid'
 
 export const App: FC = () => {
   const [notes, setNotes] = useState<NoteType[]>(data.notes)
@@ -14,7 +15,18 @@ export const App: FC = () => {
     setNotes(notes.filter(note => id !== note.id))
   }
   const handleUpdateNoteTitleChange = (id: string, title: string): void => {
-    setNotes(notes.map(note => (id === note.id ? {...note, title} : note)))
+    const addHashTagToNote = title
+      .split(' ')
+      .filter(str => str.includes('#'))
+      .join('')
+
+    setNotes(
+      notes.map(note =>
+        id === note.id
+          ? {...note, title, tags: [...note.tags, {id: v1(), title: addHashTagToNote}]}
+          : note,
+      ),
+    )
   }
   const handleCreateNoteClick = (note: NoteType): void => {
     setNotes([...notes, note])

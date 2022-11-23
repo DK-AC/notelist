@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, useCallback} from 'react'
 import './note.scss'
 import {EditableSpan} from '../editableSpan'
 import {ReusableButton} from '../reusableButton'
@@ -24,9 +24,12 @@ export const Note: FC<PropsType> = ({
   const handleRemoveNoteClick = (): void => {
     onRemoveNoteClick(id)
   }
-  const handleUpdateNoteTitleChange = (title: string): void => {
-    onUpdateNoteTitleChange(id, title)
-  }
+  const handleUpdateNoteTitleChange = useCallback(
+    (title: string): void => {
+      onUpdateNoteTitleChange(id, title)
+    },
+    [id],
+  )
   const mapTags = tags.map(tag => {
     const handleRemoveTagClick = (): void => {
       onRemoveTagClick(tags, tag.id)
